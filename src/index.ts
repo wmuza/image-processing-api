@@ -5,10 +5,18 @@ const app = express();
 const port = 3000;
 
 /**
-* Get routes from the images routes and 
-* use them in our main application
-**/
+ * Get routes from the images routes and
+ * use them in our main application
+ **/
 app.use('/api', images);
+
+/**
+ * The following callback is executed for requests to ./ whether 
+ * using GET, POST, PUT, DELETE, or any other HTTP request method
+ **/
+app.all('/', (req, res, next) => {
+  res.status(200).send('Welcome to the image processing api. See example api call http://localhost:3000/api/images?filename=palmtunnel&width=500&height=500')
+})
 
 app.listen(port, () => {
   console.log(`server started at https://localhost:${port}`);
