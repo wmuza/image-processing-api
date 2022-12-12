@@ -1,7 +1,7 @@
 import app from '../index';
 import path from 'path';
 import request from 'supertest';
-import resizeImage from '../utilities';
+import resizeImage from '../utilities/utilities';
 
 /**
  * Test endpoint response
@@ -10,9 +10,9 @@ describe('1. Test endpoint response', function (): void {
   it('1.1 Gets the /api/images endpoint', async function (): Promise<void> {
     //Test the endpoint and see if it returns status code of 200
     const response = await request(app).get('/api/images').query({
-      filename: 'palmtunnel',
-      width: '700',
-      height: '600',
+      filename: 'test',
+      width: '100',
+      height: '100',
       test: 'yes'
     });
 
@@ -28,13 +28,13 @@ describe('2. Test image processing', (): void => {
     //Define the path for the file to be resized
     const imgPath = `${path.join(
       __dirname,
-      '../../src/assets/full/'
+      '../../assets/full/'
     )}palmtunnel.jpg`;
 
     //Define the path to store the resized file for caching
     const filePath = `${path.join(
       __dirname,
-      '../../src/assets/thumb/'
+      '../../assets/thumb/'
     )}test_thumb_100_100.jpg`;
 
     //Attempt to resize the image based on the user sizes
@@ -46,12 +46,12 @@ describe('2. Test image processing', (): void => {
     const imgPath = `${path.join(
       __dirname,
       '../../assets/full/'
-    )}palmtunnel.jpg`;
+    )}dont-exist.jpg`;
 
     //Define the path to store the resized file for caching
     const filePath = `${path.join(
       __dirname,
-      '../../src/assets/thumb/'
+      '../../assets/thumb/'
     )}test_thumb_100_100.jpg`;
 
     let error;

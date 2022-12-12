@@ -23,7 +23,7 @@ app.all('/', (req: express.Request, res: express.Response): void => {
 });
 
 app.listen(port, (): void => {
-  console.log(`server started at https://localhost:${port}`);
+  console.log(`server started at http://localhost:${port}`);
 });
 
 export default app;
