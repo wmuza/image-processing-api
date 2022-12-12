@@ -77,7 +77,7 @@ images.get(
 				//Tell user that we had an error in processing the image
 				res
 					.status(401)
-					.send('Unfortunately we have failed to process your image');
+					.send('Unfortunately we have failed to process your image, please check you filename and image sizes if they are correct');
 			}
     }
   }
